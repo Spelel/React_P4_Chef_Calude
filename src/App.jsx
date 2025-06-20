@@ -1,12 +1,11 @@
-import './App.css'
-
+import Heder from './components/Heder'
+import Serch from './components/Search'
 function App() {
 
-  return (
-    <div class='text-[3rem] flex gap-4'>
-      <p>Hello</p>
-      <p>World</p>
-    </div>
+  return (<>
+      <Heder />
+      <Serch />
+    </>
   )
 }
 
