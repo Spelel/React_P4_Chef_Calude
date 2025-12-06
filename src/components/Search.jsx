@@ -1,9 +1,13 @@
 import React from "react"
 import IngergientsList from "./IngredientsList"
 import ClaudeRecipe from "./ClaudeRecipe"
+import { getRecipeFromMistral } from "./ai"
+
 export default function Search() {
 
-    const [ingredients, setIngredients] = React.useState(["all the main spices", "pasta", "ground beef", "tomato paste"])
+    const [ingredients, setIngredients] = React.useState([
+        "all the main spices", "pasta", "ground beef", "tomato paste"
+    ])
 
     function handleSubmit(formData) {
         const newIngredient = formData.get("ingredient")
@@ -12,11 +16,13 @@ export default function Search() {
     }
 
 
-    const [recipeShow, setRecipe] = React.useState(false)
+    // const [recipeShow, setRecipe] = React.useState(false)
 
     function toggle(){
-        setRecipe(prevState => !prevState)
+        getRecipeFromMistral(ingredients)
     }
+
+
     
     return<>
         <section className="pl-30 pr-30" >
@@ -35,8 +41,7 @@ export default function Search() {
                 ingredients={ingredients}
                 toggle={toggle}
             />}
-                { recipeShow ? <ClaudeRecipe /> : ""}
-            
+                {/* { recipeShow ? <ClaudeRecipe /> : ""}             */}
         </section>
     </>
 }
